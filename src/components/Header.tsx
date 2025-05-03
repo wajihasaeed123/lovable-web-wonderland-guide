@@ -46,12 +46,6 @@ const Header = () => {
               {item.title}
             </a>
           ))}
-          <Button 
-            className="bg-portfolio-purple hover:bg-portfolio-blue-dark text-white"
-            onClick={() => window.open('/wajiha_saeed_resume.pdf', '_blank')}
-          >
-            Resume
-          </Button>
         </div>
 
         <div className="md:hidden">
@@ -80,15 +74,6 @@ const Header = () => {
                 {item.title}
               </a>
             ))}
-            <Button 
-              className="bg-portfolio-purple hover:bg-portfolio-blue-dark text-white w-full"
-              onClick={() => {
-                window.open('/wajiha_saeed_resume.pdf', '_blank');
-                setIsMenuOpen(false);
-              }}
-            >
-              Resume
-            </Button>
           </div>
         </div>
       )}

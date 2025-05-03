@@ -1,7 +1,8 @@
+
 import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Github, Youtube } from 'lucide-react';
+import { Github, Youtube, Mobile } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
 const projectsData = [
@@ -9,7 +10,7 @@ const projectsData = [
     id: 1,
     title: "World Clock - Android App",
     description: "Feature-rich World Clock application built using Kotlin and XML in Android Studio with alarm, stopwatch, timer functionality, and Google AdMob integration.",
-    image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
+    image: "/lovable-uploads/039b7215-1274-477c-afe3-30cc9b6fdc5e.png",
     technologies: ["Kotlin", "XML", "Android Studio", "Room Database", "Google AdMob API"],
     links: {
       github: "https://github.com/wajihasaeed123/Project_Portfolio",
@@ -87,7 +88,7 @@ const projectsData = [
     id: 5,
     title: "FineTerryTowels - E-Commerce Website",
     description: "Premium e-commerce website offering high-quality towels for all age groups with seamless shopping experiences.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
+    image: "/lovable-uploads/dbed4469-2877-4b8d-a00c-7474541c004a.png",
     technologies: ["WordPress", "WooCommerce", "HTML", "CSS", "PHP", "JavaScript"],
     links: {
       github: "https://github.com/wajihasaeed123/Project_Portfolio",
@@ -106,6 +107,24 @@ const projectsData = [
 ];
 
 const ProjectDialog = ({ project }: { project: any }) => {
+  const [isVideoPlaying, setIsVideoPlaying] = useState(true);
+  
+  const toggleVideo = () => {
+    setIsVideoPlaying(!isVideoPlaying);
+    
+    const iframe = document.getElementById(`project-video-${project.id}`) as HTMLIFrameElement;
+    
+    if (iframe && iframe.contentWindow) {
+      if (isVideoPlaying) {
+        // Pause video
+        iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+      } else {
+        // Play video
+        iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+      }
+    }
+  };
+  
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -121,21 +140,45 @@ const ProjectDialog = ({ project }: { project: any }) => {
           <DialogTitle className="text-2xl">{project.title}</DialogTitle>
         </DialogHeader>
         <div className="mt-4">
-          <div className="aspect-video rounded-md overflow-hidden bg-muted">
-            {project.videoEmbed ? (
+          {project.videoEmbed ? (
+            <div className="aspect-[9/16] md:aspect-video rounded-md overflow-hidden bg-muted relative">
               <iframe
-                src={project.videoEmbed}
+                id={`project-video-${project.id}`}
+                src={`${project.videoEmbed}?enablejsapi=1&autoplay=1&mute=1&controls=0&modestbranding=1`}
                 className="w-full h-full"
                 title={`${project.title} video`}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               ></iframe>
-            ) : (
-              <div className="flex items-center justify-center h-full bg-gray-100 text-gray-400">
-                No video available
+              
+              <div className="absolute bottom-4 left-4 flex gap-2">
+                <Button 
+                  variant="secondary" 
+                  size="sm"
+                  className="bg-white/80 hover:bg-white"
+                  onClick={toggleVideo}
+                >
+                  {isVideoPlaying ? "Pause" : "Play"}
+                </Button>
+                
+                {project.links.youtube && (
+                  <Button 
+                    variant="secondary" 
+                    size="sm"
+                    className="bg-white/80 hover:bg-white flex items-center gap-2"
+                    onClick={() => window.open(project.links.youtube, '_blank')}
+                  >
+                    <Youtube className="h-4 w-4" />
+                    YouTube
+                  </Button>
+                )}
               </div>
-            )}
-          </div>
+            </div>
+          ) : (
+            <div className="flex items-center justify-center h-60 bg-gray-100 text-gray-400 rounded-md">
+              No video available
+            </div>
+          )}
           
           <div className="mt-4">
             <h3 className="text-lg font-medium">Description</h3>
@@ -218,11 +261,14 @@ const Projects = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projectsData.map(project => (
             <Card key={project.id} className="project-card overflow-hidden flex flex-col h-full">
-              <div className="h-48 overflow-hidden">
+              <div className="h-[320px] md:h-48 overflow-hidden relative">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <Mobile className="h-6 w-6 text-portfolio-purple/50" />
+                </div>
                 <img 
                   src={project.image} 
                   alt={project.title} 
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                  className="w-full h-full object-contain transition-transform duration-500 hover:scale-105"
                 />
               </div>
               
