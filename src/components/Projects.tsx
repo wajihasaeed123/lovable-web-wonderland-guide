@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -30,7 +29,7 @@ const projectsData = [
     title: "Internet Speed Test App",
     description: "Comprehensive Android application for testing and optimizing internet connections with features like speed test, DNS optimization, WiFi mapping and analysis.",
     image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
-    technologies: ["Java", "XML", "Android Studio", "Google Maps API", "Room Database"],
+    technologies: ["Kotlin", "XML", "Android Studio", "Google Maps API", "Room Database"],
     links: {
       github: "https://github.com/wajihasaeed123/Project_Portfolio"
     },
@@ -47,7 +46,7 @@ const projectsData = [
     id: 3,
     title: "iFix - Automotive Diagnostic App",
     description: "Android application for automotive diagnostics using Bluetooth connectivity with ELM327 scanners. Diagnoses trouble codes, reads freeze frame data, and provides real-time vehicle performance insights.",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
+    image: "/lovable-uploads/bbb31169-f5bc-4f7f-9967-45a414bba0a2.png",
     technologies: ["Java", "XML", "Android Studio", "Firebase", "TSMaster", "OpenAI GPT-4 API"],
     links: {
       github: "https://github.com/wajihasaeed123/Project_Portfolio",
@@ -68,7 +67,7 @@ const projectsData = [
     id: 4,
     title: "ProMasters Only - Cross-Platform Diagnostic App",
     description: "Cross-platform automotive diagnostic application designed specifically for ProMaster vans. Built for both Android and iOS platforms.",
-    image: "https://images.unsplash.com/photo-1449157291145-7efd050a4d0e",
+    image: "/lovable-uploads/1ee7a9f9-0166-48c9-aa93-dbc605da6fea.png",
     technologies: ["Android Studio", "TSMaster"],
     links: {
       github: "https://github.com/wajihasaeed123/Project_Portfolio",

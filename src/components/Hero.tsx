@@ -28,7 +28,10 @@ const Hero = () => {
               <Button 
                 className="bg-portfolio-purple hover:bg-portfolio-blue-dark text-white px-8 py-6"
                 onClick={() => {
-                  document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+                  const projectsSection = document.getElementById('projects');
+                  if (projectsSection) {
+                    projectsSection.scrollIntoView({ behavior: 'smooth' });
+                  }
                 }}
               >
                 View Projects <ArrowRight className="ml-2 h-5 w-5" />
@@ -37,7 +40,10 @@ const Hero = () => {
                 variant="outline" 
                 className="border-portfolio-purple text-portfolio-purple hover:bg-portfolio-purple hover:text-white"
                 onClick={() => {
-                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                  const contactSection = document.getElementById('contact');
+                  if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                  }
                 }}
               >
                 Contact Me

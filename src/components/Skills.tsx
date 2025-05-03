@@ -7,7 +7,7 @@ const skillsData = [
   {
     category: "Mobile Development",
     skills: [
-      "Java", "Kotlin", "Android SDK", "iOS Development", "Cross-platform Development"
+      "Java", "Kotlin", "Android SDK", "iOS Development"
     ]
   },
   {

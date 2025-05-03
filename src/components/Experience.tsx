@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Briefcase } from 'lucide-react';
@@ -15,18 +14,6 @@ const experienceData = [
       "Built Internet Speed Test app with features like internet speed test, DNS optimization, WiFi analyzer",
       "Implementation of Room Database for local data storage",
       "Integration with Google APIs for WiFi mapping functionality"
-    ]
-  },
-  {
-    company: "TopEdge Technologies",
-    role: "Android Developer",
-    period: "Previous",
-    location: "Multan, Pakistan",
-    description: "Worked on Android app development projects focusing on automotive diagnostic applications.",
-    highlights: [
-      "Development and maintenance of Android applications",
-      "Implementation of vehicle diagnostic features and protocols",
-      "Integration with Bluetooth ELM327 scanners"
     ]
   },
   {
