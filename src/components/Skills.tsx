@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Code, Mobile } from 'lucide-react';
+import { Code } from 'lucide-react';
 
 const skillsData = [
   {
@@ -42,7 +42,7 @@ const Skills = () => {
             <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
               <CardContent className="p-6">
                 <h3 className="text-xl font-semibold mb-4 text-portfolio-purple flex items-center">
-                  {category.category === "Mobile Development" && <Mobile className="h-5 w-5 mr-2" />}
+                  {category.category === "Mobile Development" && <span className="mr-2">📱</span>}
                   {category.category}
                 </h3>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-3">

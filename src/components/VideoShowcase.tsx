@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Play, Pause, Youtube, Mobile } from 'lucide-react';
+import { Play, Pause, Youtube } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const videoData = [
@@ -109,7 +109,7 @@ const VideoShowcase = () => {
         </div>
         
         <div className="flex items-center justify-center mb-8">
-          <Mobile className="h-6 w-6 mr-2 text-portfolio-purple" />
+          <span className="mr-2 text-portfolio-purple">📱</span>
           <span className="text-lg font-medium">Mobile View Showcase</span>
         </div>
         
