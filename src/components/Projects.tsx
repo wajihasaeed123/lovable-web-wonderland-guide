@@ -1,12 +1,50 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Github, Youtube } from 'lucide-react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
 const projectsData = [
   {
     id: 1,
+    title: "World Clock - Android App",
+    description: "Feature-rich World Clock application built using Kotlin and XML in Android Studio with alarm, stopwatch, timer functionality, and Google AdMob integration.",
+    image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
+    technologies: ["Kotlin", "XML", "Android Studio", "Room Database", "Google AdMob API"],
+    links: {
+      github: "https://github.com/wajihasaeed123/Project_Portfolio",
+      youtube: "https://youtube.com/shorts/8sRqaQBaQF0?feature=share"
+    },
+    features: [
+      "World Clock – Displays real-time clocks for countries and cities worldwide",
+      "Alarm – Create, customize, and manage multiple alarms",
+      "Stopwatch – Track time with precision, includes lap functionality",
+      "Timer – Countdown feature with intuitive controls",
+      "Room Database for local data storage"
+    ],
+    videoEmbed: "https://youtube.com/embed/8sRqaQBaQF0"
+  },
+  {
+    id: 2,
+    title: "Internet Speed Test App",
+    description: "Comprehensive Android application for testing and optimizing internet connections with features like speed test, DNS optimization, WiFi mapping and analysis.",
+    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
+    technologies: ["Java", "XML", "Android Studio", "Google Maps API", "Room Database"],
+    links: {
+      github: "https://github.com/wajihasaeed123/Project_Portfolio"
+    },
+    features: [
+      "Internet speed test with download and upload metrics",
+      "Speed optimization through DNS configuration",
+      "App data usage tracking and analytics",
+      "WiFi map using Google API for nearby networks",
+      "WiFi analyzer for signal strength and channel analysis",
+      "Connected devices detection for network monitoring"
+    ]
+  },
+  {
+    id: 3,
     title: "iFix - Automotive Diagnostic App",
     description: "Android application for automotive diagnostics using Bluetooth connectivity with ELM327 scanners. Diagnoses trouble codes, reads freeze frame data, and provides real-time vehicle performance insights.",
     image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
@@ -23,14 +61,15 @@ const projectsData = [
       "AI-powered DTC descriptions using ChatGPT",
       "Car profile management for personalized diagnostics"
     ],
-    achievements: ["First Position in Final Year Project Exhibition (Air University)"]
+    achievements: ["First Position in Final Year Project Exhibition (Air University)"],
+    videoEmbed: "https://youtube.com/embed/qxUiZfxbqU8"
   },
   {
-    id: 2,
+    id: 4,
     title: "ProMasters Only - Cross-Platform Diagnostic App",
-    description: "Cross-platform automotive diagnostic application designed specifically for ProMaster vans. Built using Flutter for both Android and iOS platforms.",
+    description: "Cross-platform automotive diagnostic application designed specifically for ProMaster vans. Built for both Android and iOS platforms.",
     image: "https://images.unsplash.com/photo-1449157291145-7efd050a4d0e",
-    technologies: ["Flutter", "Dart", "Android Studio", "TSMaster"],
+    technologies: ["Android Studio", "TSMaster"],
     links: {
       github: "https://github.com/wajihasaeed123/Project_Portfolio",
       youtube: "https://youtu.be/uT3ZftO2v6Y",
@@ -42,14 +81,15 @@ const projectsData = [
       "Custom gauges for RPM and Coolant Temperature",
       "Real-time vehicle data monitoring",
       "Trouble code diagnosis"
-    ]
+    ],
+    videoEmbed: "https://youtube.com/embed/uT3ZftO2v6Y"
   },
   {
-    id: 3,
+    id: 5,
     title: "FineTerryTowels - E-Commerce Website",
     description: "Premium e-commerce website offering high-quality towels for all age groups with seamless shopping experiences.",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
-    technologies: ["WordPress", "WooCommerce", "HTML", "CSS", "PHP", "JavaScript", "Ajax", "jQuery"],
+    technologies: ["WordPress", "WooCommerce", "HTML", "CSS", "PHP", "JavaScript"],
     links: {
       github: "https://github.com/wajihasaeed123/Project_Portfolio",
       youtube: "https://youtube.com/shorts/FD3TmYHzQJ0",
@@ -61,9 +101,114 @@ const projectsData = [
       "Multiple payment options (COD and bank payments)",
       "Custom CSS modifications with Elementor",
       "Backend optimization for smooth operation"
-    ]
+    ],
+    videoEmbed: "https://youtube.com/embed/FD3TmYHzQJ0"
   }
 ];
+
+const ProjectDialog = ({ project }: { project: any }) => {
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button 
+          variant="ghost" 
+          className="text-portfolio-purple hover:bg-portfolio-purple/10 p-0"
+        >
+          View Details
+        </Button>
+      </DialogTrigger>
+      <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+        <DialogHeader>
+          <DialogTitle className="text-2xl">{project.title}</DialogTitle>
+        </DialogHeader>
+        <div className="mt-4">
+          <div className="aspect-video rounded-md overflow-hidden bg-muted">
+            {project.videoEmbed ? (
+              <iframe
+                src={project.videoEmbed}
+                className="w-full h-full"
+                title={`${project.title} video`}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            ) : (
+              <div className="flex items-center justify-center h-full bg-gray-100 text-gray-400">
+                No video available
+              </div>
+            )}
+          </div>
+          
+          <div className="mt-4">
+            <h3 className="text-lg font-medium">Description</h3>
+            <p className="mt-2">{project.description}</p>
+          </div>
+          
+          <div className="mt-4">
+            <h3 className="text-lg font-medium">Technologies</h3>
+            <div className="flex flex-wrap gap-2 mt-2">
+              {project.technologies.map((tech: string, index: number) => (
+                <span key={index} className="bg-portfolio-purple/10 text-portfolio-purple px-3 py-1 rounded-full text-sm">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+          
+          <div className="mt-4">
+            <h3 className="text-lg font-medium">Features</h3>
+            <ul className="list-disc pl-5 mt-2 space-y-1">
+              {project.features.map((feature: string, index: number) => (
+                <li key={index}>{feature}</li>
+              ))}
+            </ul>
+          </div>
+          
+          {project.achievements && (
+            <div className="mt-4">
+              <h3 className="text-lg font-medium">Achievements</h3>
+              <ul className="list-disc pl-5 mt-2">
+                {project.achievements.map((achievement: string, index: number) => (
+                  <li key={index} className="text-portfolio-purple font-medium">{achievement}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+          
+          <div className="mt-6 flex flex-wrap gap-3">
+            {project.links.github && (
+              <Button 
+                variant="outline" 
+                className="flex items-center gap-2"
+                onClick={() => window.open(project.links.github, '_blank')}
+              >
+                <Github className="h-4 w-4" />
+                GitHub Repository
+              </Button>
+            )}
+            {project.links.youtube && (
+              <Button 
+                variant="outline" 
+                className="flex items-center gap-2"
+                onClick={() => window.open(project.links.youtube, '_blank')}
+              >
+                <Youtube className="h-4 w-4" />
+                YouTube Video
+              </Button>
+            )}
+            {project.links.website && (
+              <Button 
+                variant="outline"
+                onClick={() => window.open(project.links.website, '_blank')}
+              >
+                Visit Website
+              </Button>
+            )}
+          </div>
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+};
 
 const Projects = () => {
   return (
@@ -85,7 +230,8 @@ const Projects = () => {
               <CardHeader>
                 <CardTitle className="text-portfolio-blue-dark">{project.title}</CardTitle>
                 <CardDescription className="text-portfolio-gray">
-                  {project.technologies.join(" • ")}
+                  {project.technologies.slice(0, 3).join(" • ")}
+                  {project.technologies.length > 3 && " • ..."}
                 </CardDescription>
               </CardHeader>
               
@@ -119,23 +265,19 @@ const Projects = () => {
                   >
                     <Github className="h-5 w-5" />
                   </a>
-                  <a 
-                    href={project.links.youtube} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-portfolio-blue-dark hover:text-portfolio-purple transition-colors duration-300"
-                  >
-                    <Youtube className="h-5 w-5" />
-                  </a>
+                  {project.links.youtube && (
+                    <a 
+                      href={project.links.youtube} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-portfolio-blue-dark hover:text-portfolio-purple transition-colors duration-300"
+                    >
+                      <Youtube className="h-5 w-5" />
+                    </a>
+                  )}
                 </div>
                 
-                <Button 
-                  variant="ghost" 
-                  className="text-portfolio-purple hover:bg-portfolio-purple/10 p-0"
-                  onClick={() => window.location.href = `#project-${project.id}`}
-                >
-                  View Details
-                </Button>
+                <ProjectDialog project={project} />
               </CardFooter>
             </Card>
           ))}

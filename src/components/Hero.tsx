@@ -19,16 +19,27 @@ const Hero = () => {
               Wajiha Saeed
             </h1>
             <h2 className="text-xl md:text-2xl font-medium mb-6 text-portfolio-gray">
-              Android Developer | Cross-Platform Mobile App Developer | WordPress Developer
+              Android Developer | Mobile App Developer
             </h2>
             <p className="text-lg mb-8 max-w-2xl">
-              Creating innovative mobile applications with 1+ years of experience. Specialized in automotive diagnostic applications and building responsive user-centric web & mobile solutions.
+              Creating innovative mobile applications with 1+ years of experience. Specialized in automotive diagnostic applications and building responsive user-centric mobile solutions.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Button className="bg-portfolio-purple hover:bg-portfolio-blue-dark text-white px-8 py-6">
+              <Button 
+                className="bg-portfolio-purple hover:bg-portfolio-blue-dark text-white px-8 py-6"
+                onClick={() => {
+                  document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
                 View Projects <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              <Button variant="outline" className="border-portfolio-purple text-portfolio-purple hover:bg-portfolio-purple hover:text-white">
+              <Button 
+                variant="outline" 
+                className="border-portfolio-purple text-portfolio-purple hover:bg-portfolio-purple hover:text-white"
+                onClick={() => {
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
                 Contact Me
               </Button>
             </div>

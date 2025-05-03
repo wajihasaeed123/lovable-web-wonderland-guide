@@ -5,11 +5,24 @@ import { Briefcase } from 'lucide-react';
 
 const experienceData = [
   {
-    company: "TopEdge Technologies",
+    company: "DreamEdge Technologies",
     role: "Android Developer",
     period: "Current",
     location: "Multan, Pakistan",
-    description: "Working on Android app development projects focusing on automotive diagnostic applications.",
+    description: "Working on Android app development projects including World Clock app and Internet Speed Test app.",
+    highlights: [
+      "Developed World Clock app with features like alarms, stopwatch, timer, and Google AdMob integration",
+      "Built Internet Speed Test app with features like internet speed test, DNS optimization, WiFi analyzer",
+      "Implementation of Room Database for local data storage",
+      "Integration with Google APIs for WiFi mapping functionality"
+    ]
+  },
+  {
+    company: "TopEdge Technologies",
+    role: "Android Developer",
+    period: "Previous",
+    location: "Multan, Pakistan",
+    description: "Worked on Android app development projects focusing on automotive diagnostic applications.",
     highlights: [
       "Development and maintenance of Android applications",
       "Implementation of vehicle diagnostic features and protocols",

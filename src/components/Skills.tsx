@@ -7,35 +7,19 @@ const skillsData = [
   {
     category: "Mobile Development",
     skills: [
-      "Java", "Kotlin", "Flutter", "Dart", "React Native", 
-      "Android SDK", "iOS Development", "Cross-platform Development"
-    ]
-  },
-  {
-    category: "Web Development",
-    skills: [
-      "HTML", "CSS", "JavaScript", "PHP", "WordPress",
-      "WooCommerce", "jQuery", "Ajax"
+      "Java", "Kotlin", "Android SDK", "iOS Development", "Cross-platform Development"
     ]
   },
   {
     category: "Databases",
     skills: [
-      "Firebase", "SQLite", "MySQL", "JSON"
+      "Firebase", "SQLite", "Room Database", "MySQL"
     ]
   },
   {
     category: "Tools & Software",
     skills: [
-      "Android Studio", "VS Code", "Xcode", "GitHub",
-      "Postman", "TSMaster", "Command Line", "Adobe Illustrator"
-    ]
-  },
-  {
-    category: "Other Skills",
-    skills: [
-      "RESTful APIs", "OTP Verification", "Automotive Diagnostics",
-      "UI/UX Design", "Problem Solving", "App Deployment"
+      "Android Studio", "GitHub", "Postman", "TSMaster"
     ]
   }
 ];
