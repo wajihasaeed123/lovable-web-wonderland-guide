@@ -1,8 +1,7 @@
-
-import React, { useState } from 'react';
+import React from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Github, Youtube, Mobile } from 'lucide-react';
+import { Github, Youtube, Smartphone } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
 const projectsData = [
@@ -263,7 +262,7 @@ const Projects = () => {
             <Card key={project.id} className="project-card overflow-hidden flex flex-col h-full">
               <div className="h-[320px] md:h-48 overflow-hidden relative">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <Mobile className="h-6 w-6 text-portfolio-purple/50" />
+                  <Smartphone className="h-6 w-6 text-portfolio-purple/50" />
                 </div>
                 <img 
                   src={project.image} 
